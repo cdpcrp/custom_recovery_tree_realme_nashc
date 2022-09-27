@@ -1,6 +1,34 @@
+import /init.recovery.teei_daemon.rc
+
 on init
     setprop sys.usb.configfs 1
     setprop sys.usb.ffs.aio_compat 1
+
+on fs && property:ro.debuggable=0
+    # distinguish USB shoulde connect or not, i.e. CDP vs SDP
+    write /sys/class/udc/musb-hdrc/device/cmode 1
+    # set charging free due to it wait for USB activation
+    start adbd
+    install_keyring
+
+on property:vendor.sys.listeners.registered=true
+    start keymaster-4-1
+    start gatekeeper-1-0
+
+service keymaster-4-1 /system/lib64/android.hardware.keymaster@4.1-service.trustonic
+    interface android.hardware.keymaster@4.0::IKeymasterDevice default
+    interface android.hardware.keymaster@4.1::IKeymasterDevice default
+    user root
+    group root drmrpc
+    disabled
+    seclabel u:r:recovery:s0
+
+service gatekeeper-1-0 /system/lib64/android.hardware.gatekeeper@1.0-service
+    interface android.hardware.gatekeeper@1.0::IGatekeeper default
+    user root
+    group root
+    disabled
+    seclabel u:r:recovery:s0
 
     mount pstore pstore /sys/fs/pstore nodev noexec nosuid
     chown system log /sys/fs/pstore/console-ramoops
