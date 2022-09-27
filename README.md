@@ -4,4 +4,4 @@ Realme 8 4G (RMX3085/L1)
 
 
 Kernel Source: [Reame-Kernel-OpenSource](https://github.com/nashc-dev/android_kernel_realme_mt6785)
-       (...if you wanr to build recovery with Kernel Source.)
+       (...if you want to build recovery with Kernel Source.)
