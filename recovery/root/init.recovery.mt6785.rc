@@ -1,4 +1,5 @@
 import /init.recovery.teei_daemon.rc
+import /init.aging.rc
 
 on init
     setprop sys.usb.configfs 1
