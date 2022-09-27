@@ -1,5 +1,5 @@
 # Custom Recovery Tree
-Realme 8 4G (RMX3085/L1) also known as nashc
+Realme 8 4G (nashc, RMX3085/L1)
  - Initial Tree, work in progress...
 
 
