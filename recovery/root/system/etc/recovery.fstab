@@ -1,16 +1,16 @@
 # Initial fstab file, need more improvement
 
 # Main Partitions erofs
-/system                      erofs     system                               flags=display=system;logical
-/vendor                      erofs     vendor                               flags=display=vendor;logical
-/product                     erofs     product                              flags=display=product;logical
-/system_ext                  erofs     system_ext                           flags=display=system_ext;logical
+system                      erofs     /system                               flags=display=system;logical
+vendor                      erofs     /vendor                               flags=display=vendor;logical
+product                     erofs     /product                              flags=display=product;logical
+system_ext                  erofs     /system_ext                           flags=display=system_ext;logical
 
 # Main Partitions ext4
-/system                      ext4      system                               flags=display=system;logical
-/vendor                      ext4      vendor                               flags=display=vendor;logical
-/product                     ext4      product                              flags=display=product;logical
-/system_ext                  ext4      system_ext                           flags=display=system_ext;logical
+system                      ext4      /system                               flags=display=system;logical
+vendor                      ext4      /vendor                               flags=display=vendor;logical
+product                     ext4      /product                              flags=display=product;logical
+system_ext                  ext4      /system_ext                           flags=display=system_ext;logical
 
 # Other Partitions
 /vbmeta                      emmc      /dev/block/by-name/vbmeta            flags=display=vbmeta
