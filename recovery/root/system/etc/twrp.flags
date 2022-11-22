@@ -1,24 +1,8 @@
-# Initial fstab file, need more improvement
-
-# Main Partitions erofs
-system                      erofs     /system                               flags=display=system;logical
-vendor                      erofs     /vendor                               flags=display=vendor;logical
-product                     erofs     /product                              flags=display=product;logical
-system_ext                  erofs     /system_ext                           flags=display=system_ext;logical
-
-# Main Partitions ext4
-system                      ext4      /system                               flags=display=system;logical
-vendor                      ext4      /vendor                               flags=display=vendor;logical
-product                     ext4      /product                              flags=display=product;logical
-system_ext                  ext4      /system_ext                           flags=display=system_ext;logical
-
 # Other Partitions
 /vbmeta                      emmc      /dev/block/by-name/vbmeta            flags=display=vbmeta
 /recovery                    emmc      /dev/block/by-name/recovery          flags=display=recovery
 /boot                        emmc      /dev/block/by-name/boot              flags=display=boot
-/data                        f2fs      /dev/block/by-name/userdata          flags=display=data
 /cache                       ext4      /dev/block/by-name/cache             flags=display=cache
-/metadata                    ext4      /dev/block/by-name/metadata          flags=display=metadata
 /persistent                  emmc      /dev/block/by-name/frp               flags=display=persistent
 /mnt/vendor/protect_f        ext4      /dev/block/by-name/protect1          flags=display=protect_f
 /mnt/vendor/protect_s        ext4      /dev/block/by-name/protect2          flags=display=protect_s
@@ -29,6 +13,5 @@ system_ext                  ext4      /system_ext                           flag
 /misc                        emmc      /dev/block/by-name/misc              flags=display=misc
 
 # External Partitions
-auto                         auto      /devices/platform/externdevice*      flags=display=auto
-auto                         vfat      /devices/platform/usb3_xhci*         flags=display=auto
-none                         swap      /dev/block/zram0                     flags=display=none
+/external_sd    vfat       /dev/block/mmcblk1p1                           nosuid,nodev                                                    defaults
+/usb_otg        vfat       /dev/block/sdg1                                nosuid,nodev                                                    defaults
