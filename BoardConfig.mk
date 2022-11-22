@@ -73,8 +73,7 @@ BOARD_PRODUCTIMAGE_FILE_SYSTEM_TYPE := ext4
 # Recovery
 TARGET_RECOVERY_PIXEL_FORMAT := RGBA_8888
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
-TARGET_SYSTEM_PROP := $(DEVICE_PATH)/recovery/root/system/etc/system.prop
-TARGET_RECOVERY_INITRC := $(DEVICE_PATH)/recovery/root/init.recovery.mt6785.rc
+TARGET_SYSTEM_PROP := $(DEVICE_PATH)/system.prop
 
 # Hack: prevent anti rollback
 PLATFORM_SECURITY_PATCH := 2099-12-31
