@@ -10,7 +10,6 @@
 /mnt/vendor/nvcfg            ext4      /dev/block/by-name/nvcfg             flags=display=nvcfg
 /mnt/vendor/persist          ext4      /dev/block/by-name/persist           flags=display=persist
 /nvram                       emmc      /dev/block/by-name/nvram             flags=display=nvram
-/misc                        emmc      /dev/block/by-name/misc              flags=display=misc
 
 # External Partitions
 /external_sd    vfat       /dev/block/mmcblk1p1                           nosuid,nodev                                                    defaults
