@@ -1,17 +1,18 @@
 # Initial fstab file, need more improvement
 
 # Main Partitions erofs
-system          /system         erofs       ro wait,,avb=vbmeta_system,logical,first_stage_mount,avb_keys=/avb/q-gsi.avbpubkey:/avb/r-gsi.avbpubkey:/avb/s-gsi.avbpubkey
+system          /system         erofs       ro wait,,logical
+vendor          /vendor         erofs       ro wait,,logical
+product         /product        erofs       ro wait,,logical
+odm             /odm            erofs       ro wait,,logical
+
 system          /system         ext4        ro wait,,avb=vbmeta_system,logical,first_stage_mount,avb_keys=/avb/q-gsi.avbpubkey:/avb/r-gsi.avbpubkey:/avb/s-gsi.avbpubkey
-vendor          /vendor         erofs       ro wait,,avb,logical,first_stage_mount
 vendor          /vendor         ext4        ro wait,,avb,logical,first_stage_mount
-product         /product        erofs       ro wait,,avb,logical,first_stage_mount
 product         /product        ext4        ro wait,,avb,logical,first_stage_mount
-odm             /odm            erofs       ro wait,logical,first_stage_mount,nofail
 odm             /odm            ext4        ro wait,logical,first_stage_mount,nofail
 
 # Other Partitions
-/dev/block/by-name/cache        /cache      ext4                noatime,nosuid,nodev,noauto_da_alloc,discard                                                                     wait,check,formattable,first_stage_mount
-/dev/block/by-name/metadata     /metadata   ext4                noatime,nosuid,nodev,discard                                                                                     wait,check,formattable,first_stage_mount
-/dev/block/by-name/userdata     /data       f2fs                noatime,nosuid,nodev,discard,fsync_mode=nobarrier,reserve_root=134217,resgid=1065,inlinecrypt                    wait,check,formattable,quota,latemount,fileencryption=aes-256-xts:aes-256-cts:v2+inlinecrypt_optimized
+/dev/block/by-name/cache        /cache      ext4                noatime,nosuid,nodev,noauto_da_alloc,discard                                                                     wait,check,formattable
+/dev/block/by-name/metadata     /metadata   ext4                noatime,nosuid,nodev,discard                                                                                     wait,check,formattable
+/dev/block/by-name/userdata     /data       f2fs                noatime,nosuid,nodev,discard,fsync_mode=nobarrier,reserve_root=134217,resgid=1065,inlinecrypt                    wait,check,formattable,quota,fileencryption=aes-256-xts:aes-256-cts:v2+inlinecrypt_optimized
 /dev/block/by-name/misc         /misc       emmc                defaults                                                                                                         defaults
