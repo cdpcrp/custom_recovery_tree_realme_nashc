@@ -36,6 +36,7 @@ service mobicore /vendor/bin/mcDriverDaemon --sfs-reformat --P1 /mnt/vendor/pers
 	-r /vendor/app/mcRegistry/5020170115e016302017012521300000.drbin
     user root
     group root
+	setenv LD_LIBRARY_PATH /vendor/app/mcRegistry:/odm/vendor/app/mcRegistry
 	disabled
     seclabel u:r:recovery:s0
 

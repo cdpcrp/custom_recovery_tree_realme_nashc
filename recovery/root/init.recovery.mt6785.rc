@@ -1,4 +1,4 @@
-import /init.recovery.teei_daemon.rc
+import /init.recovery.trustonic.rc
 import /init.aging.rc
 
 on init
@@ -19,12 +19,22 @@ on boot
 
 on property:ro.crypto.state=encrypted && property:ro.crypto.type=file
     install_keyring
+    start mcDriverDaemon
     setprop crypto.ready 1
 
-on property:hwservicemanager.ready=true && property:crypto.ready=1
+on property:sys.listeners.registered=true && property:vendor.sys.listeners.registered=true
+    start mcDriverDaemon
     start vendor.keymaster-4-0-trustonic
     start keymaster_attestation-1-1
     start vendor.gatekeeper-1-0
+    start tee-1-1
+
+on property:hwservicemanager.ready=true && property:crypto.ready=1
+    start mcDriverDaemon
+    start vendor.keymaster-4-0-trustonic
+    start keymaster_attestation-1-1
+    start vendor.gatekeeper-1-0
+    start tee-1-1
 
 service keystore_auth /system/bin/keystore_auth
     oneshot
@@ -43,6 +53,7 @@ service vendor.keymaster-4-0-trustonic /vendor/bin/hw/android.hardware.keymaster
     interface android.hardware.keymaster@4.1::IKeymasterDevice default
     user root
     group root drmrpc
+    setenv LD_LIBRARY_PATH /vendor/lib64:/vendor/lib:/system/lib64:/system/lib:/sbin
     disabled
     seclabel u:r:recovery:s0
 
@@ -50,6 +61,23 @@ service vendor.gatekeeper-1-0 /vendor/bin/hw/android.hardware.gatekeeper@1.0-ser
     interface android.hardware.gatekeeper@1.0::IGatekeeper default
     user root
     group root
+    setenv LD_LIBRARY_PATH /vendor/lib64:/vendor/lib:/system/lib64:/system/lib:/sbin
+    disabled
+    seclabel u:r:recovery:s0
+
+service keymaster_attestation-1-1 /system/bin/vendor.mediatek.hardware.keymaster_attestation@1.1-service
+    interface vendor.mediatek.hardware.keymaster_attestation@1.0::IKeymasterDevice default
+    interface vendor.mediatek.hardware.keymaster_attestation@1.1::IKeymasterDevice default
+    user root
+    group root
+    setenv LD_LIBRARY_PATH /vendor/lib64:/vendor/lib:/system/lib64:/system/lib:/sbin
+    disabled
+    seclabel u:r:recovery:s0
+
+service tee-1-1 /system/bin/vendor.trustonic.tee@1.1-service
+    user root
+    group root
+    setenv LD_LIBRARY_PATH /vendor/lib64:/vendor/lib:/system/lib64:/system/lib:/sbin
     disabled
     seclabel u:r:recovery:s0
 
