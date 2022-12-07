@@ -1,10 +1,3 @@
-#
-# Copyright (C) 2022 The Android Open Source Project
-# Copyright (C) 2022 SebaUbuntu's TWRP device tree generator
-#
-# SPDX-License-Identifier: Apache-2.0
-#
-
 LOCAL_PATH := device/realme/nashc
 
 # Keystore
@@ -17,9 +10,13 @@ PRODUCT_SOONG_NAMESPACES += \
 
 # fastbootd
 PRODUCT_PACKAGES += \
-    android.hardware.fastboot@1.0-impl-mock
-
+    android.hardware.fastboot@1.0-impl-mock \
+    fastbootd
 TW_INCLUDE_FASTBOOTD := true
 
 # Dynamic Partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
+
+# Copyright (C) 2022 The Android Open Source Project
+# Copyright (C) 2022 SebaUbuntu's TWRP device tree generator
+# SPDX-License-Identifier: Apache-2.0
