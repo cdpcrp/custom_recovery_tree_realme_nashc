@@ -12,7 +12,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Inherit from GSI Products.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/developer_gsi_keys.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 
 # Inherit from RMX3085 Device Tree.
 $(call inherit-product, device/$(PRODUCT_BRAND)/$(PRODUCT_DEVICE)/device.mk)
