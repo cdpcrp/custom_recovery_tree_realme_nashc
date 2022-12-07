@@ -132,6 +132,7 @@ TW_INCLUDE_NTFS_3G := true
 TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
 TW_MAX_BRIGHTNESS := 2047
 TW_DEFAULT_BRIGHTNESS := 900
+TW_EXCLUDE_DEFAULT_USB_INIT := true
 
 # Version/Maintainer
 TW_DEVICE_VERSION := Crypton
