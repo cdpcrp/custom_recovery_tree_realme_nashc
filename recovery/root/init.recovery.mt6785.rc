@@ -8,6 +8,7 @@ on init
 on fs && property:ro.debuggable=0
     write /sys/class/udc/musb-hdrc/device/cmode 1
     start adbd
+    install_keyring
 
 on post-fs
     start boot-hal-1-1
@@ -19,7 +20,7 @@ on boot
 
 on property:ro.crypto.state=encrypted && property:ro.crypto.type=file
     install_keyring
-    start mcDriverDaemon
+    start mobicore
     setprop crypto.ready 1
 
 on property:sys.listeners.registered=true && property:vendor.sys.listeners.registered=true
