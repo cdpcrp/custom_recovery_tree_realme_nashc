@@ -1,10 +1,6 @@
 LOCAL_PATH := device/realme/nashc
 
-# Keystore
-PRODUCT_PACKAGES += \
-    android.system.keystore2
-
-# Soong namespaces
+# Soong Namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)
 
