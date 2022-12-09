@@ -32,6 +32,7 @@ on property:sys.listeners.registered=true && property:vendor.sys.listeners.regis
     start vendor.gatekeeper-1-0
     start tee-1-1
     start soter_hal
+    start hal_cryptoeng_oppo
 
 on property:hwservicemanager.ready=true && property:crypto.ready=1
     start mobicore
@@ -40,6 +41,7 @@ on property:hwservicemanager.ready=true && property:crypto.ready=1
     start vendor.gatekeeper-1-0
     start tee-1-1
     start soter_hal
+    start hal_cryptoeng_oppo
 
 service keystore_auth /system/bin/keystore_auth
     oneshot
@@ -85,3 +87,4 @@ on property:twrp.all.users.decrypted=true
     stop vendor.gatekeeper-1-0
     stop tee-1-1
     stop soter_hal
+    stop hal_cryptoeng_oppo
