@@ -1,5 +1,4 @@
 import /init.recovery.trustonic.rc
-import /init.aging.rc
 
 on init
     setprop sys.usb.configfs 1
@@ -10,7 +9,7 @@ on init
     export LD_LIBRARY_PATH /system/lib64:/vendor/lib64:/vendor/lib64/hw
     export PATH /sbin:/system/bin:/vendor/bin:/vendor/bin/hw
 
-on fs && property:ro.debuggable=0
+on fs && property:ro.debuggable=1
     write /sys/class/udc/musb-hdrc/device/cmode 1
     start adbd
     install_keyring
@@ -86,21 +85,3 @@ service tee-1-1 /system/bin/vendor.trustonic.tee@1.1-service
     setenv LD_LIBRARY_PATH /vendor/lib64:/vendor/lib:/system/lib64:/system/lib:/sbin
     disabled
     seclabel u:r:recovery:s0
-
-    mount pstore pstore /sys/fs/pstore nodev noexec nosuid
-    chown system log /sys/fs/pstore/console-ramoops
-    chmod 0440 /sys/fs/pstore/console-ramoops
-    chown system log /sys/fs/pstore/console-ramoops-0
-    chmod 0440 /sys/fs/pstore/console-ramoops-0
-    chown system log /sys/fs/pstore/pmsg-ramoops-0
-    chmod 0440 /sys/fs/pstore/pmsg-ramoops-0
-
-    symlink /dev/block/platform/bootdevice/by-name/preloader_a /dev/block/platform/bootdevice/by-name/preloader_emmc_a
-    symlink /dev/block/platform/bootdevice/by-name/preloader_b /dev/block/platform/bootdevice/by-name/preloader_emmc_b
-    symlink /dev/block/platform/bootdevice/by-name/preloader_a /dev/block/platform/bootdevice/by-name/preloader_ufs_a
-    symlink /dev/block/platform/bootdevice/by-name/preloader_b /dev/block/platform/bootdevice/by-name/preloader_ufs_b
-
-    symlink /dev/block/mapper/pl_a /dev/block/by-name/preloader_raw_a
-    symlink /dev/block/mapper/pl_b /dev/block/by-name/preloader_raw_b
-    symlink /dev/block/mapper/pl_a /dev/block/platform/bootdevice/by-name/preloader_raw_a
-    symlink /dev/block/mapper/pl_b /dev/block/platform/bootdevice/by-name/preloader_raw_b
