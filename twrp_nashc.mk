@@ -8,7 +8,8 @@ PRODUCT_RELEASE_NAME := RMX3085
 
 # Inherit from Prebuilt Products.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
 # Inherit from RMX3085 Device Tree.
 $(call inherit-product, device/realme/nashc/device.mk)
