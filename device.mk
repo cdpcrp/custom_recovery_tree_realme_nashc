@@ -4,11 +4,18 @@ LOCAL_PATH := device/realme/nashc
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)
 
-# fastbootd
+# Fastboot
 PRODUCT_PACKAGES += \
-    android.hardware.fastboot@1.0-impl-mock \
-    fastbootd
+    android.hardware.fastboot@1.0-impl-mock
+
+# Fastbootd
 TW_INCLUDE_FASTBOOTD := true
+PRODUCT_PACKAGES += \
+    fastbootd
+
+# Set GRF/Vendor freeze properties
+BOARD_API_LEVEL := 32
+PRODUCT_SHIPPING_API_LEVEL := 30
 
 # Dynamic Partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
