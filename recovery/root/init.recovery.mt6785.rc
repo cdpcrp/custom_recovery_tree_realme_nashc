@@ -31,6 +31,7 @@ on property:sys.listeners.registered=true && property:vendor.sys.listeners.regis
     start keymaster_attestation-1-1
     start vendor.gatekeeper-1-0
     start tee-1-1
+    start soter_hal
 
 on property:hwservicemanager.ready=true && property:crypto.ready=1
     start mobicore
@@ -38,10 +39,11 @@ on property:hwservicemanager.ready=true && property:crypto.ready=1
     start keymaster_attestation-1-1
     start vendor.gatekeeper-1-0
     start tee-1-1
+    start soter_hal
 
 service keystore_auth /system/bin/keystore_auth
     oneshot
-    user system
+    user root
     group root
     seclabel u:r:recovery:s0
 
@@ -68,22 +70,6 @@ service vendor.gatekeeper-1-0 /system/bin/android.hardware.gatekeeper@1.0-servic
     disabled
     seclabel u:r:recovery:s0
 
-service keymaster_attestation-1-1 /system/bin/vendor.mediatek.hardware.keymaster_attestation@1.1-service
-    interface vendor.mediatek.hardware.keymaster_attestation@1.0::IKeymasterDevice default
-    interface vendor.mediatek.hardware.keymaster_attestation@1.1::IKeymasterDevice default
-    user root
-    group root
-    setenv LD_LIBRARY_PATH /vendor/lib64:/vendor/lib:/system/lib64:/system/lib:/sbin
-    disabled
-    seclabel u:r:recovery:s0
-
-service tee-1-1 /system/bin/vendor.trustonic.tee@1.1-service
-    user root
-    group root
-    setenv LD_LIBRARY_PATH /vendor/lib64:/vendor/lib:/system/lib64:/system/lib:/sbin
-    disabled
-    seclabel u:r:recovery:s0
-
 service prepdecrypt /system/bin/prepdecrypt.sh
     user root
     group root
@@ -98,3 +84,4 @@ on property:twrp.all.users.decrypted=true
     stop keymaster_attestation-1-1
     stop vendor.gatekeeper-1-0
     stop tee-1-1
+    stop soter_hal
