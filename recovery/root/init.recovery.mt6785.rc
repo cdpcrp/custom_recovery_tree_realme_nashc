@@ -9,9 +9,7 @@ on init
     export LD_LIBRARY_PATH /system/lib64:/vendor/lib64:/vendor/lib64/hw
     export PATH /sbin:/system/bin:/vendor/bin:/vendor/bin/hw
 
-on fs && property:ro.debuggable=1
-    write /sys/class/udc/musb-hdrc/device/cmode 1
-    start adbd
+on fs
     install_keyring
 
 on post-fs
@@ -85,3 +83,18 @@ service tee-1-1 /system/bin/vendor.trustonic.tee@1.1-service
     setenv LD_LIBRARY_PATH /vendor/lib64:/vendor/lib:/system/lib64:/system/lib:/sbin
     disabled
     seclabel u:r:recovery:s0
+
+service prepdecrypt /system/bin/prepdecrypt.sh
+    user root
+    group root
+    disabled
+    oneshot
+    seclabel u:r:recovery:s0
+
+on property:twrp.all.users.decrypted=true
+    setprop crypto.ready 0
+    stop mobicore
+    stop vendor.keymaster-4-0-trustonic
+    stop keymaster_attestation-1-1
+    stop vendor.gatekeeper-1-0
+    stop tee-1-1
