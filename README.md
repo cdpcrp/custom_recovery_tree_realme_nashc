@@ -16,11 +16,14 @@ What's working?
 - Flashing .img/zip
 - ADB Sideload
 - Terminal/Console
-- External SD Card
+- External Storage (SD and OTG)
 
 Bugs?
 - Internal Storage (Encrypted)
-- MTP (...due to data not mounting)
+- MTP; might need to disable and enable mtp button to work.
+
+Notes:
+If you see error like: `Failed to mount /partition_name (Invalid Argument)`, please ignore it for now. It was due to erofs as file-system type in recovery.fstab. I am still thinking if it should be removed or not. 
 
 Kernel Source: [Reame-Kernel-MT6785](https://github.com/nashc-dev/android_kernel_realme_mt6785)
        (...if you want to build recovery with Kernel Source.)
