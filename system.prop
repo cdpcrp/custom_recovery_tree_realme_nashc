@@ -1,7 +1,6 @@
 # Additional System Properties
 ro.mediatek.platform=MT6785
 ro.product.device=nashc
-ro.sys.usb.storage.type=mtp
 ro.debuggable=1
 ro.adb.secure=0
 ro.boot.avb_version=2.0
