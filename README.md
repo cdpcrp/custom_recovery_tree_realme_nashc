@@ -10,7 +10,7 @@
 |Android Version     |11 (RealmeUI 2)                                               |
 |Storage             |64/128GB                                                      |
 
-# Custom Recovery Status
+## Custom Recovery Status
 What's working?
 - Vibration/Haptic 
 - Flashing .img/zip
@@ -27,3 +27,16 @@ If you see error like: `Failed to mount /partition_name (Invalid Argument)`, ple
 
 Kernel Source: [Reame-Kernel-MT6785](https://github.com/nashc-dev/android_kernel_realme_mt6785)
        (...if you want to build recovery with Kernel Source.)
+Telegram Community: https://t.me/Realme8Discussion
+
+## Credits
+- TeamWin Recovery Project (Source)
+- SkyHawk Recovery Project (Source)
+- PitchBlack Recovery Project (Source)
+- OrangeFox Recovery Project (Source)
+- SebaUbuntu for the generated device tree.
+- To all of the tester who patiently test and send logs.
+  - 一護 黒崎
+  - AdamsProStudio
+  - Ivan Avetisov
+
