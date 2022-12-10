@@ -49,6 +49,12 @@ service keystore_auth /system/bin/keystore_auth
     group root
     seclabel u:r:recovery:s0
 
+service gatekeeperd /system/bin/gatekeeperd /data/misc/gatekeeper
+    oneshot
+    user root
+    group root
+    seclabel u:r:recovery:s0
+
 service keystore /system/bin/keystore /tmp/misc/keystore
     user root
     group root drmrpc readproc log
@@ -79,8 +85,16 @@ service prepdecrypt /system/bin/prepdecrypt.sh
     oneshot
     seclabel u:r:recovery:s0
 
+on property:enable.fbe.service=0
+    stop mobicore
+    stop vendor.keymaster-4-0-trustonic
+    stop keymaster_attestation-1-1
+    stop vendor.gatekeeper-1-0
+    stop tee-1-1
+    stop soter_hal
+    stop hal_cryptoeng_oppo
+
 on property:twrp.all.users.decrypted=true
-    setprop crypto.ready 0
     stop mobicore
     stop vendor.keymaster-4-0-trustonic
     stop keymaster_attestation-1-1
