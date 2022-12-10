@@ -1,3 +1,5 @@
+# Copyright (c) 2020, The Linux Foundation. All rights reserved.
+
 import /init.recovery.trustonic.rc
 
 on init
