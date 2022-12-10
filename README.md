@@ -27,7 +27,7 @@ If you see error like: `Failed to mount /partition_name (Invalid Argument)`, ple
 
 Kernel Source: [Reame-Kernel-MT6785](https://github.com/nashc-dev/android_kernel_realme_mt6785)
        (...if you want to build recovery with Kernel Source.)
-Telegram Community: https://t.me/Realme8Discussion
+
 
 ## Credits
 - TeamWin Recovery Project (Source)
@@ -40,3 +40,4 @@ Telegram Community: https://t.me/Realme8Discussion
   - AdamsProStudio
   - Ivan Avetisov
 
+Telegram Community: https://t.me/Realme8Discussion
