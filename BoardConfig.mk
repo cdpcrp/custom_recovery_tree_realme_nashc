@@ -139,3 +139,22 @@ TW_DEVICE_VERSION := Crypton
 # Debugging Configs
 TWRP_INCLUDE_LOGCAT := true
 TARGET_USES_LOGD := true
+
+
+# SkyHawk Build Flags
+SHRP_MAINTAINER := cd-Spidey
+SHRP_DEVICE_CODE := nashc
+SHRP_PATH := $(DEVICE_PATH)
+SHRP_REC_TYPE := Treble
+SHRP_DEVICE_TYPE := A_Only
+SHRP_NOTCH := true
+SHRP_EDL_MODE := 1
+SHRP_EXTERNAL := /external_sd
+SHRP_INTERNAL := /data/media/0
+SHRP_OTG := /usb_otg
+SHRP_FLASH := 1
+SHRP_DARK := true
+SHRP_REC := /dev/block/by-name/recovery
+SHRP_EXPRESS := true
+
+# SkyHawk Addons, to be added soon.
