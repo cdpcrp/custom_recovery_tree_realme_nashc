@@ -13,12 +13,13 @@ on init
     setprop vendor.usb.acm_port0 ""
     setprop vendor.usb.acm_port1 ""
     setprop vendor.usb.acm_enable 0
+    setprop vendor.usb.use_ffs_mtp 1
 
 on property:ro.boot.usbcontroller=*
     setprop sys.usb.controller ${ro.boot.usbcontroller}
 
 on fs
-    mkdir config
+    mount configfs none /config
     setprop vendor.usb.vid "0x22d9"
     mkdir /dev/usb-ffs 0770 shell shell
     mkdir /dev/usb-ffs/adb 0770 shell shell
@@ -57,7 +58,6 @@ on fs
     symlink /config/usb_gadget/g1/configs/b.1 /config/usb_gadget/g1/os_desc/b.1
     mount functionfs adb /dev/usb-ffs/adb uid=2000,gid=2000
 
-
 on property:sys.usb.config=none && property:sys.usb.configfs=1
     write /config/usb_gadget/g1/UDC "none"
     stop adbd
@@ -72,7 +72,8 @@ on property:sys.usb.config=none && property:sys.usb.configfs=1
     write /sys/devices/platform/mt_usb/saving 0
     setprop sys.usb.state ${sys.usb.config}
 
-on property:sys.usb.ffs.ready=1 && property:sys.usb.config=adb && property:sys.usb.configfs=1
+on property:sys.usb.ffs.ready=1 && property:sys.usb.config=adb && property:sys.usb.configfs=1 && \
+property:vendor.usb.acm_enable=0 && property:sys.usb.configfs=1
     write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "adb"
     write /config/usb_gadget/g1/idVendor 0x18d1
     write /config/usb_gadget/g1/idProduct 0xd001
@@ -86,7 +87,8 @@ on property:sys.usb.ffs.ready=1 && property:sys.usb.config=adb && property:sys.u
 on property:sys.usb.config=sideload && property:sys.usb.ffs.ready=1 && property:sys.usb.configfs=1
     write /config/usb_gadget/g1/idVendor 0x18d1
 
-on property:sys.usb.config=mtp && property:sys.usb.configfs=1
+on property:sys.usb.config=mtp && property:sys.usb.configfs=1 && \
+property:sys.usb.configfs=1
     setprop sys.usb.ffs.mtp.ready 1
     write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "mtp"
     rm /config/usb_gadget/g1/configs/b.1/f1
