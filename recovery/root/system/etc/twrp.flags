@@ -2,11 +2,14 @@
 /vbmeta                      emmc      /dev/block/by-name/vbmeta            flags=display=vbmeta
 /recovery                    emmc      /dev/block/by-name/recovery          flags=display=recovery
 /boot                        emmc      /dev/block/by-name/boot              flags=display=boot
-/dtbo                        emmc      /dev/block/by-name/dtbo             defaults defaults
+/dtbo                        emmc      /dev/block/by-name/dtbo
 /cache                       ext4      /dev/block/by-name/cache             flags=display=cache
 /persistent                  emmc      /dev/block/by-name/frp               flags=display=persistent
-/vbmeta_vendor        emmc             /dev/block/by-name/vbmeta_vendor    defaults first_stage_mount,nofail
-/vbmeta_system        emmc             /dev/block/by-name/vbmeta_system    defaults first_stage_mount,nofail,avb=vbmeta
+/misc                        emmc      /dev/block/by-name/misc              defaults                                                 defaults
+/nvram                       emmc      /dev/block/by-name/nvram             flags=display=nvram
+
+/vbmeta_vendor              emmc             /dev/block/by-name/vbmeta_vendor
+/vbmeta_system              emmc             /dev/block/by-name/vbmeta_system
 
 # Mount Vendor
 /mnt/vendor/protect_f                   ext4      /dev/block/by-name/protect1          flags=display=protect_f
@@ -16,42 +19,39 @@
 /mnt/vendor/persist                     ext4      /dev/block/by-name/persist           flags=display=persist
 
 # Oppo
-/mnt/vendor/oplusreserve                ext4      /dev/block/by-name/oplusreserve2            nosuid,nodev,noatime,barrier=1 wait,check,first_stage_mount,nofail
-/mnt/oplus/op2                          ext4      /dev/block/by-name/oplusreserve2            nosuid,nodev,noatime,barrier=1 check,first_stage_mount,nofail
-/odmdtbo       emmc   /dev/block/by-name/odmdtbo                       defaults                       defaults
-/otp           emmc     /dev/block/by-name/otp                      defaults                       defaults
+/mnt/vendor/oplusreserve                ext4      /dev/block/by-name/oplusreserve2
+/odmdtbo       emmc   /dev/block/by-name/odmdtbo
+/otp           emmc     /dev/block/by-name/otp
 
 # Standard MediaTek Mounts
-/nvram                       emmc      /dev/block/by-name/nvram             flags=display=nvram
-/proinfo              emmc  /dev/block/by-name/proinfo    defaults                                                 defaults
-/bootloader           emmc  /dev/block/by-name/lk        defaults                                                 defaults
-/bootloader2          emmc /dev/block/by-name/lk2        defaults                                                 defaults
-/para                 emmc /dev/block/by-name/para       defaults                                                 defaults
-/misc                 emmc /dev/block/by-name/misc      defaults                                                 defaults
-/logo                 emmc  /dev/block/by-name/logo      defaults                                                 defaults
-/expdb                emmc /dev/block/by-name/expdb      defaults                                                 defaults
-/seccfg               emmc /dev/block/by-name/seccfg    defaults                                                 defaults
-/tee1                 emmc  /dev/block/by-name/tee1      defaults                                                 defaults
-/tee2                 emmc /dev/block/by-name/tee2       defaults                                                 defaults
-/scp1                 emmc /dev/block/by-name/scp1       defaults                                                 defaults
-/scp2                 emmc  /dev/block/by-name/scp2       defaults                                                 defaults
-/sspm_1               emmc /dev/block/by-name/sspm_1     defaults                                                 defaults
-/sspm_2               emmc  /dev/block/by-name/sspm_2    defaults                                                 defaults
-/mcupm_1              emmc /dev/block/by-name/mcupm_1    defaults                                                 defaults
-/mcupm_2              emmc /dev/block/by-name/mcupm_2   defaults                                                 defaults
-/md1img               emmc  /dev/block/by-name/md1img    defaults                                                 defaults
-/md1dsp               emmc /dev/block/by-name/md1dsp     defaults                                                 defaults
-/md1arm7              emmc  /dev/block/by-name/md1arm7   defaults                                                 defaults
-/md3img               emmc  /dev/block/by-name/md3img     defaults                                                 defaults
-/cam_vpu1             emmc  /dev/block/by-name/cam_vpu1  defaults                                                 defaults
-/cam_vpu2             emmc  /dev/block/by-name/cam_vpu2  defaults                                                 defaults
-/cam_vpu3             emmc  /dev/block/by-name/cam_vpu3  defaults                                                 defaults
-/gz1                  emmc  /dev/block/by-name/gz1       defaults                                                 defaults
-/gz2                  emmc  /dev/block/by-name/gz2       defaults                                                 defaults
-/spmfw                emmc  /dev/block/by-name/spmfw     defaults                                                 defaults
-/audio_dsp            emmc  /dev/block/by-name/audio_dsp defaults                                                 defaults
-/pi_img               emmc  /dev/block/by-name/pi_img    defaults                                                 defaults
-/boot_para            emmc  /dev/block/by-name/boot_para defaults                                                 defaults
+/proinfo              emmc  /dev/block/by-name/proinfo
+/bootloader           emmc  /dev/block/by-name/lk
+/bootloader2          emmc /dev/block/by-name/lk2
+/para                 emmc /dev/block/by-name/para
+/logo                 emmc  /dev/block/by-name/logo
+/expdb                emmc /dev/block/by-name/expdb
+/seccfg               emmc /dev/block/by-name/seccfg
+/tee1                 emmc  /dev/block/by-name/tee1
+/tee2                 emmc /dev/block/by-name/tee2
+/scp1                 emmc /dev/block/by-name/scp1
+/scp2                 emmc  /dev/block/by-name/scp2
+/sspm_1               emmc /dev/block/by-name/sspm_1
+/sspm_2               emmc  /dev/block/by-name/sspm_2
+/mcupm_1              emmc /dev/block/by-name/mcupm_1
+/mcupm_2              emmc /dev/block/by-name/mcupm_2
+/md1img               emmc  /dev/block/by-name/md1img
+/md1dsp               emmc /dev/block/by-name/md1dsp
+/md1arm7              emmc  /dev/block/by-name/md1arm7
+/md3img               emmc  /dev/block/by-name/md3img
+/cam_vpu1             emmc  /dev/block/by-name/cam_vpu1
+/cam_vpu2             emmc  /dev/block/by-name/cam_vpu2
+/cam_vpu3             emmc  /dev/block/by-name/cam_vpu3
+/gz1                  emmc  /dev/block/by-name/gz1
+/gz2                  emmc  /dev/block/by-name/gz2
+/spmfw                emmc  /dev/block/by-name/spmfw
+/audio_dsp            emmc  /dev/block/by-name/audio_dsp
+/pi_img               emmc  /dev/block/by-name/pi_img
+/boot_para            emmc  /dev/block/by-name/boot_para
 
 # External Partitions
 /external_sd              auto     /dev/block/mmcblk0p1         /dev/block/mmcblk0   flags=display="Micro SD Card";storage;wipeingui;removable
