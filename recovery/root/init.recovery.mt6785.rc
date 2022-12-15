@@ -33,6 +33,7 @@ on property:sys.listeners.registered=true && property:vendor.sys.listeners.regis
     start keymaster_attestation-1-1
     start vendor.gatekeeper-1-0
     start tee-1-1
+    start soter_hal
     start hal_cryptoeng_oppo
 
 on property:hwservicemanager.ready=true && property:crypto.ready=1
@@ -41,6 +42,7 @@ on property:hwservicemanager.ready=true && property:crypto.ready=1
     start keymaster_attestation-1-1
     start vendor.gatekeeper-1-0
     start tee-1-1
+    start soter_hal
     start hal_cryptoeng_oppo
 
 service keystore_auth /system/bin/keystore_auth
@@ -72,10 +74,20 @@ service vendor.gatekeeper-1-0 /system/bin/android.hardware.gatekeeper@1.0-servic
     disabled
     seclabel u:r:recovery:s0
 
+on property:enable.fbe.service=0
+    stop mobicore
+    stop vendor.keymaster-4-0-trustonic
+    stop keymaster_attestation-1-1
+    stop vendor.gatekeeper-1-0
+    stop tee-1-1
+    stop soter_hal
+    stop hal_cryptoeng_oppo
+
 on property:twrp.all.users.decrypted=true
     stop mobicore
     stop vendor.keymaster-4-0-trustonic
     stop keymaster_attestation-1-1
     stop vendor.gatekeeper-1-0
     stop tee-1-1
+    stop soter_hal
     stop hal_cryptoeng_oppo

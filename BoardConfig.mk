@@ -44,25 +44,15 @@ BOARD_KERNEL_BASE := 0x40078000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_TAGS_OFFSET := 0x0bc08000
 BOARD_RAMDISK_OFFSET := 0x07c08000
-
-# Dynamic Partitions
 BOARD_FLASH_BLOCK_SIZE := 131072 # (BOARD_KERNEL_PAGESIZE * 64)
-BOARD_SUPER_PARTITION_SIZE := 10200547328
-BOARD_SUPER_PARTITION_SYSTEM_DEVICE_SIZE := 3087618048 # TODO: Fix hardcoded value
-
-BOARD_SUPER_PARTITION_GROUPS := main
-BOARD_MAIN_SIZE := 10196353024
-BOARD_MAIN_PARTITION_LIST := system system_ext vendor product odm
-BOARD_USES_METADATA_PARTITION := true
-
 BOARD_MKBOOTIMG_ARGS += --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB)
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOTIMG_HEADER_VERSION)
 
 # Kernel Source
-TARGET_KERNEL_ARCH := $(TARGET_ARCH)
-TARGET_KERNEL_HEADER_ARCH := $(TARGET_ARCH)
+TARGET_KERNEL_ARCH := arm64
+TARGET_KERNEL_HEADER_ARCH := $(TARGET_KERNEL_ARCH)
 TARGET_KERNEL_SOURCE := kernel/realme/nashc
 TARGET_KERNEL_CONFIG := nashc_defconfig
 TARGET_KERNEL_CLANG_COMPILE := true
@@ -82,8 +72,6 @@ TARGET_RECOVERY_PIXEL_FORMAT := RGBA_8888
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
 TARGET_SYSTEM_PROP := $(DEVICE_PATH)/system.prop
 TARGET_VENDOR_PROP := $(DEVICE_PATH)/vendor.prop
-TW_OVERRIDE_SYSTEM_PROPS := \
-    "ro.build.date.utc;ro.bootimage.build.date.utc=ro.build.date.utc;ro.odm.build.date.utc=ro.build.date.utc;ro.product.build.date.utc=ro.build.date.utc;ro.system.build.date.utc=ro.build.date.utc;ro.system_ext.build.date.utc=ro.build.date.utc;ro.vendor.build.date.utc=ro.build.date.utc;ro.build.product;ro.build.fingerprint=ro.system.build.fingerprint;ro.build.version.incremental;ro.product.device=ro.product.system.device;ro.product.model=ro.product.system.model;ro.product.name=ro.product.system.name"
 
 # Versions and Security Patch
 PLATFORM_SECURITY_PATCH := 2099-12-31

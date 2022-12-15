@@ -95,7 +95,10 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export OF_PATCH_AVB20=1
 	# Prevent Splash Screen Changing
 	export OF_NO_SPLASH_CHANGE=1
+	# Magisk Boot Patch
+	export OF_USE_MAGISKBOOT=1
 	export OF_PATCH_VBMETA_FLAG=2
+	export OF_USE_MAGISKBOOT_FOR_ALL_PATCHES=1
 	# Decryption
 	export OF_FIX_DECRYPTION_ON_DATA_MEDIA=1
 	
