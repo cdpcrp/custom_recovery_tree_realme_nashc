@@ -4,6 +4,7 @@ ro.hardware.kmsetkey=trustonic
 ro.hardware.gatekeeper=trustonic
 ro.vendor.mtk_trustonic_tee_support=1
 ro.vendor.mtk_tee_gp_support=1
+fbe.metadata.wrappedkey=true
 
 # Crypto
 ro.crypto.allow_encrypt_override=true
