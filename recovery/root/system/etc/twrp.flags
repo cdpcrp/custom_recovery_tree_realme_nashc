@@ -24,7 +24,7 @@
 /bootloader                 emmc        /dev/block/by-name/lk
 /bootloader2                emmc        /dev/block/by-name/lk2
 /para                       emmc        /dev/block/by-name/para
-/logo                       emmc        /dev/block/by-name/logo
+/logo                       emmc        /dev/block/by-name/logo             flags=display=logo;flashimg=1
 /expdb                      emmc        /dev/block/by-name/expdb
 /seccfg                     emmc        /dev/block/by-name/seccfg
 /tee1                       emmc        /dev/block/by-name/tee1
