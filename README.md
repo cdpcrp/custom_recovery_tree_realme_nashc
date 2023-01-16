@@ -1,4 +1,4 @@
-# Device Tree for Realme 8 (nashc/RMX3085)
+# Device Tree for Realme 8 (nashc)
 ![Realme 8](https://image05.realme.net/general/20210427/1619510447064.png)
 
 |Basic               |Spec Sheet                                                    |
@@ -7,24 +7,22 @@
 |Chipset             |MediaTek MT6785 Helio G95                                     |
 |GPU                 |ARM Mali-G76 MC4                                              |
 |Memory              |4/6GB RAM                                                     |
-|Android Version     |11 (RealmeUI 2)                                               |
+|Android Version     |11 to 12 (RUI2 to RUI3)                                               |
 |Storage             |64/128GB                                                      |
 
-## Custom Recovery Status
-What's working?
+## Working Feature
 - Vibration/Haptic 
 - Flashing .img/zip
 - ADB Sideload
 - Terminal/Console
 - External Storage (SD and OTG)
 
-Bugs?
+## Bugs and Issues
 - Internal Storage (Encrypted)
 - MTP; might need to disable and enable mtp button to work.
 
 Notes:
 If you see error like, especially when you are in Stock ROM: `Failed to mount /partition_name (Invalid Argument)`, please ignore it for now. It was due to erofs as file-system of this device (and most of recent Realme devices)
-
 Kernel Source: [Reame-Kernel-MT6785](https://github.com/nashc-dev/android_kernel_realme_mt6785)
        (...if you want to build recovery with Kernel Source.)
 
