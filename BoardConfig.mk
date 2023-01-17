@@ -130,6 +130,9 @@ TW_MAX_BRIGHTNESS := 2047
 TW_DEFAULT_BRIGHTNESS := 900
 TW_EXCLUDE_DEFAULT_USB_INIT := true
 
+# Property Override
+TW_OVERRIDE_SYSTEM_PROPS := "ro.build.version.sdk"
+
 # Version/Maintainer
 TW_DEVICE_VERSION := Crypton
 
