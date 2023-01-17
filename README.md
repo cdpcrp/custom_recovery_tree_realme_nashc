@@ -21,9 +21,9 @@
 - Internal Storage (Encrypted)
 - MTP; might need to disable and enable mtp button to work.
 
-Notes:
-If you see error like, especially when you are in Stock ROM: `Failed to mount /partition_name (Invalid Argument)`, please ignore it for now. It was due to erofs as file-system of this device (and most of recent Realme devices)
-Kernel Source: [Reame-Kernel-MT6785](https://github.com/nashc-dev/android_kernel_realme_mt6785)
+## Notes
+- If you see error like, especially when you are in Stock ROM: `Failed to mount /partition_name (Invalid Argument)`, please ignore it for now. It was due to erofs as file-system of this device (and most of recent Realme devices)
+- Kernel Source: [Reame-Kernel-MT6785](https://github.com/nashc-dev/android_kernel_realme_mt6785)
        (...if you want to build recovery with Kernel Source.)
 
 
