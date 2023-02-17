@@ -1,38 +1,26 @@
 # Start Daemon (Registry directories should already be present)
-service mobicore /vendor/bin/mcDriverDaemon --P1 /mnt/vendor/persist/mcRegistry \
-	-r /vendor/app/mcRegistry/06090000000000000000000000000000.drbin \
-	-r /vendor/app/mcRegistry/020f0000000000000000000000000000.drbin \
-	-r /vendor/app/mcRegistry/05120000000000000000000000000000.drbin \
-	-r /vendor/app/mcRegistry/020b0000000000000000000000000000.drbin \
-	-r /odm/vendor/app/mcRegistry/05070000000000000000000000000000.drbin \
-	-r /odm/vendor/app/mcRegistry/030b0000000000000000000000000000.drbin \
-	-r /vendor/app/mcRegistry/03100000000000000000000000000000.drbin \
-	-r /odm/vendor/app/mcRegistry/030c0000000000000000000000000000.drbin \
-	-r /vendor/app/mcRegistry/40188311faf343488db888ad39496f9a.drbin \
-	-r /vendor/app/mcRegistry/090b0000000000000000000000000000.drbin \
-	-r /vendor/app/mcRegistry/0f5eed3c3b5a47afacca69a84bf0efad.drbin \
-	-r /vendor/app/mcRegistry/07060000000000000000000000007169.drbin \
-	-r /vendor/app/mcRegistry/08070000000000000000000000008270.drbin \
-	-r /vendor/app/mcRegistry/07407000000000000000000000000000.drbin \
-	-r /vendor/app/mcRegistry/9073f03a9618383bb1856eb3f990babd.drbin \
-		   -r /vendor/app/mcRegistry/5020170115e016302017012521300000.drbin
+service mobicore /system/bin/mcDriverDaemon --sfs-reformat --P1 /mnt/vendor/persist/mcRegistry \
+    	-r /vendor/app/mcRegistry/06090000000000000000000000000000.drbin \
+    	-r /vendor/app/mcRegistry/020f0000000000000000000000000000.drbin \
+    	-r /vendor/app/mcRegistry/05120000000000000000000000000000.drbin \
+    	-r /vendor/app/mcRegistry/020b0000000000000000000000000000.drbin \
+    	-r /odm/vendor/app/mcRegistry/05070000000000000000000000000000.drbin \
+    	-r /odm/vendor/app/mcRegistry/030b0000000000000000000000000000.drbin \
+    	-r /vendor/app/mcRegistry/03100000000000000000000000000000.drbin \
+    	-r /odm/vendor/app/mcRegistry/030c0000000000000000000000000000.drbin \
+    	-r /vendor/app/mcRegistry/40188311faf343488db888ad39496f9a.drbin \
+    	-r /vendor/app/mcRegistry/090b0000000000000000000000000000.drbin \
+    	-r /vendor/app/mcRegistry/0f5eed3c3b5a47afacca69a84bf0efad.drbin \
+    	-r /vendor/app/mcRegistry/07060000000000000000000000007169.drbin \
+    	-r /vendor/app/mcRegistry/08070000000000000000000000008270.drbin \
+    	-r /vendor/app/mcRegistry/07407000000000000000000000000000.drbin \
+    	-r /vendor/app/mcRegistry/9073f03a9618383bb1856eb3f990babd.drbin \
+    	-r /vendor/app/mcRegistry/5020170115e016302017012521300000.drbin
     user root
     group root
     setenv LD_LIBRARY_PATH /vendor/app/mcRegistry:/odm/vendor/app/mcRegistry
     disabled
     seclabel u:r:recovery:s0
-
-on post-fs
-    mkdir /mnt/vendor/persist 0771 root root
-    chown system system /mnt/vendor/persist
-    chmod 0771 /mnt/vendor/persist
-    restorecon /mnt/vendor/persist
-    mount ext4 /dev/block/by-name/persist /mnt/vendor/persist rw
-    mkdir /mnt/vendor/persist/mcRegistry 0771 root root
-    start mobicore
-    
-on post-fs-data
-    mkdir /data/vendor/key_provisioning 0771 root root
 
 # t-Drv naming
 # 020f0000000000000000000000000000.drbin : utils
