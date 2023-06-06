@@ -16,7 +16,6 @@ $(call inherit-product, device/realme/nashc/device.mk)
 
 # Inherit from GSI Products.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/developer_gsi_keys.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 
 # Inherit from PBRP-common stuff, if building PBRP.
 $(call inherit-product-if-exists, vendor/pb/config/common.mk)
