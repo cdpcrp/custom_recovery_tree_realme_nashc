@@ -1,3 +1,7 @@
+# Copyright (C) 2023 The Android Open Source Project
+# Copyright (C) 2023 SebaUbuntu's TWRP Device Tree Generator
+# SPDX-License-Identifier: Apache-2.0
+
 # Device Information
 PRODUCT_DEVICE := nashc
 PRODUCT_NAME := twrp_$(PRODUCT_DEVICE)
@@ -24,7 +28,3 @@ $(call inherit-product-if-exists, vendor/pb/config/common.mk)
 $(call inherit-product-if-exists, vendor/twrp/config/common.mk)
 
 PRODUCT_GMS_CLIENTID_BASE := android-$(PRODUCT_MANUFCATURER)
-
-# Copyright (C) 2022 The Android Open Source Project
-# Copyright (C) 2022 SebaUbuntu's TWRP device tree generator
-# SPDX-License-Identifier: Apache-2.0
