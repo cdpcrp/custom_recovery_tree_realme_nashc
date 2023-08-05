@@ -144,7 +144,9 @@ TW_EXCLUDE_APEX := true
 TW_EXCLUDE_DEFAULT_USB_INIT := true
 
 # Property Override
-# TW_OVERRIDE_SYSTEM_PROPS := "ro.build.version.sdk"
+TW_OVERRIDE_SYSTEM_PROPS := \
+    "ro.build.fingerprint=ro.system.build.fingerprint;ro.build.version.incremental"
+
 
 # Version/Maintainer
 TW_DEVICE_VERSION := Crypton
