@@ -18,7 +18,8 @@
 - External Storage (SD and OTG)
 
 ## Bugs and Issues
-- Internal Storage (Encrypted)
+- Internal Storage (Encrypted, if lockscreen is enable.)
+- Internal Storage (Decrypted, if lockscreen is disable.)
 - MTP; might need to disable and enable mtp button to work.
 
 ## Notes
