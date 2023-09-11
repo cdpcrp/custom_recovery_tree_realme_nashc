@@ -6,6 +6,22 @@ on init
     symlink /dev/block/platform/bootdevice /dev/block/bootdevice
     export LD_LIBRARY_PATH /system/lib64:/vendor/lib64:/vendor/lib64/hw
 
+on fs
+    install_keyring
+
+service keystore_auth /system/bin/keystore_auth
+    oneshot
+    user system
+    group root
+    disabled
+    seclabel u:r:recovery:s0
+
+service keystore /system/bin/keystore /tmp/misc/keystore
+    user root
+    group root drmrpc readproc
+    disabled
+    seclabel u:r:recovery:s0
+
 on post-fs
     start boot-hal-1-1
 
@@ -13,22 +29,18 @@ on boot
     start health-hal-2-1
 
 service vendor.keymaster-4-0-trustonic /system/bin/android.hardware.keymaster@4.0-service.trustonic
-    interface android.hardware.keymaster@4.0::IKeymasterDevice default
-    interface android.hardware.keymaster@4.1::IKeymasterDevice default
     user root
     group root drmrpc
     disabled
     seclabel u:r:recovery:s0
 
 service vendor.gatekeeper-1-0 /system/bin/android.hardware.gatekeeper@1.0-service
-    interface android.hardware.gatekeeper@1.0::IGatekeeper default
     user root
     group root
     disabled
     seclabel u:r:recovery:s0
 
 on property:ro.crypto.state=encrypted && property:ro.crypto.type=file
-    install_keyring
     start mobicore
 
 on property:sys.listeners.registered=true && property:vendor.sys.listeners.registered=true
@@ -40,11 +52,6 @@ on property:hwservicemanager.ready=true
     start mobicore
     start vendor.keymaster-4-0-trustonic
     start vendor.gatekeeper-1-0
-
-on property:enable.fbe.service=0
-    stop mobicore
-    stop vendor.keymaster-4-0-trustonic
-    stop vendor.gatekeeper-1-0
 
 on property:twrp.all.users.decrypted=true
     stop mobicore
