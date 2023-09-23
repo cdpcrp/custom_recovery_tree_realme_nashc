@@ -5,6 +5,7 @@ import /init.recovery.trustonic.rc
 on init
     symlink /dev/block/platform/bootdevice /dev/block/bootdevice
     export LD_LIBRARY_PATH /system/lib64:/vendor/lib64:/vendor/lib64/hw
+    setprop com.android.build.boot.security_patch 2099-12-31
 
 on fs
     install_keyring
