@@ -128,26 +128,20 @@ TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
 
 # TWRP Configuration
 TW_THEME := portrait_hdpi
-TW_EXTRA_LANGUAGES := true
-TW_SCREEN_BLANK_ON_BOOT := true
-TW_INPUT_BLACKLIST := "hbtp_vm"
-TW_USE_TOOLBOX := true
 TW_INCLUDE_RESETPROP := true
-TW_INCLUDE_FUSE_EXFAT := true
-TWRP_INCLUDE_LOGCAT := true
 TW_INCLUDE_REPACKTOOLS := true
+TW_EXTRA_LANGUAGES := true
 TW_INCLUDE_NTFS_3G := true
 TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
 TW_MAX_BRIGHTNESS := 2047
 TW_DEFAULT_BRIGHTNESS := 900
-TW_EXCLUDE_APEX := true
+TW_NO_SCREEN_BLANK := true
+TW_INCLUDE_FUSE_EXFAT := true
 TW_EXCLUDE_DEFAULT_USB_INIT := true
-TW_FRAMERATE := 60
+TW_EXCLUDE_APEX := true
 
 # Property Override
-TW_OVERRIDE_SYSTEM_PROPS := \
-    "ro.build.fingerprint=ro.system.build.fingerprint;ro.build.version.incremental"
-
+TW_OVERRIDE_SYSTEM_PROPS := "ro.build.version.sdk"
 
 # Version/Maintainer
 TW_DEVICE_VERSION := Crypton
