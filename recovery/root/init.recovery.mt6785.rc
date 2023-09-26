@@ -41,6 +41,24 @@ service vendor.gatekeeper-1-0 /system/bin/android.hardware.gatekeeper@1.0-servic
     disabled
     seclabel u:r:recovery:s0
 
+service keymaster_attestation-1-1 /system/bin/vendor.mediatek.hardware.keymaster_attestation@1.1-service
+    interface vendor.mediatek.hardware.keymaster_attestation@1.0::IKeymasterDevice default
+    interface vendor.mediatek.hardware.keymaster_attestation@1.1::IKeymasterDevice default
+    user root
+    group root
+    disabled
+    seclabel u:r:recovery:s0
+
+service tee-1-1 /system/bin/vendor.trustonic.tee@1.1-service
+    user root
+    group root
+    seclabel u:r:recovery:s0
+    
+service soter_hal /system/bin/vendor.trustonic.tee@1.1-service
+    user root
+    group root
+    seclabel u:r:recovery:s0
+
 on property:ro.crypto.state=encrypted && property:ro.crypto.type=file
     start mobicore
 
@@ -48,13 +66,22 @@ on property:sys.listeners.registered=true && property:vendor.sys.listeners.regis
     start mobicore
     start vendor.keymaster-4-0-trustonic
     start vendor.gatekeeper-1-0
+    start keymaster_attestation-1-1
+    start tee-1-1
+    start soter_hal
 
 on property:hwservicemanager.ready=true
     start mobicore
     start vendor.keymaster-4-0-trustonic
     start vendor.gatekeeper-1-0
+    start keymaster_attestation-1-1
+    start tee-1-1
+    start soter_hal
 
 on property:twrp.all.users.decrypted=true
     stop mobicore
     stop vendor.keymaster-4-0-trustonic
     stop vendor.gatekeeper-1-0
+    stop keymaster_attestation-1-1
+    stop tee-1-1
+    stop soter_hal
