@@ -23,10 +23,8 @@ service keystore /system/bin/keystore /tmp/misc/keystore
     disabled
     seclabel u:r:recovery:s0
 
-on post-fs
-    start boot-hal-1-1
-
 on boot
+    start boot-hal-1-1
     start health-hal-2-1
 
 service vendor.keymaster-4-0-trustonic /system/bin/android.hardware.keymaster@4.0-service.trustonic
@@ -52,11 +50,13 @@ service keymaster_attestation-1-1 /system/bin/vendor.mediatek.hardware.keymaster
 service tee-1-1 /system/bin/vendor.trustonic.tee@1.1-service
     user root
     group root
+    disabled
     seclabel u:r:recovery:s0
     
 service soter_hal /system/bin/vendor.trustonic.tee@1.1-service
     user root
     group root
+    disabled
     seclabel u:r:recovery:s0
 
 on property:ro.crypto.state=encrypted && property:ro.crypto.type=file
@@ -71,7 +71,9 @@ on property:sys.listeners.registered=true && property:vendor.sys.listeners.regis
     start soter_hal
 
 on property:hwservicemanager.ready=true
+    write /proc/bootprof "MOBICORE: create /data/vendor/mcRegistry ++ (FBE encrypted)"
     start mobicore
+    write /proc/bootprof "MOBICORE: create /data/vendor/mcRegistry -- (FBE encrypted)"
     start vendor.keymaster-4-0-trustonic
     start vendor.gatekeeper-1-0
     start keymaster_attestation-1-1
