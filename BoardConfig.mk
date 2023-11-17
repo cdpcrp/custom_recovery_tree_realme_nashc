@@ -144,7 +144,7 @@ TW_EXCLUDE_APEX := true
 TW_OVERRIDE_SYSTEM_PROPS := "ro.build.version.sdk"
 
 # Version/Maintainer
-TW_DEVICE_VERSION := Crypton
+include $(DEVICE_PATH)/version.mk
 
 # Debugging Configs
 TWRP_INCLUDE_LOGCAT := true
