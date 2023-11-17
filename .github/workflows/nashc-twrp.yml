@@ -4,10 +4,8 @@ on:
   push:
     branches:
       - 'android-12.1'
-    paths-ignore:
-      - '**/README.md'
-      - '**/vendorsetup.sh'
-      - '**/nashc-twrp.yml'
+    paths:
+      - 'version.mk'
 
 jobs:
   build:
